@@ -18,18 +18,20 @@ app.listen(port, hostname, () => {
 
 //adding routes
 app.get('/', (req, res) => {
-    res.send('Hello World in NodeJS and Express!');
+    res.status(404).send('No page!');
+    return res;
 });
+//send html response
 app.get('/test2', (req, res) => {
-    res.send('Hello World in NodeJS and Express!');
+    return res.status(200).send('<h1>Hello World in NodeJS and Express!</h1>');
 });
 //adding routes to test request
 app.get('/test/:id', (req, res) => {
-    res.send(`request id ${req.params.id}`);
+    return res.status(200).send(`request id ${req.params.id}`);
 });
 // adding routes to response json
 app.get('/test2/:id', (req, res) => {
-    return res.json({
+    return res.status(200).json({
         id: req.params.id,
         name: 'test2'
     });
